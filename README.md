@@ -30,7 +30,8 @@ ai-decision-reliability-eval/
 │   ├── confidence_check.py
 │   └── escalation_check.py
 ├── reports/
-│   └── sample_report.md
+│   ├── sample_report.md
+│   └── audit_report_<timestamp>.md
 └── docs/
     └── research_memo.md
 ```
@@ -39,6 +40,31 @@ ai-decision-reliability-eval/
 
 ```bash
 python main.py
+```
+
+The script prints JSON evaluation results to the terminal and also writes a timestamped Markdown audit artifact to `reports/`:
+
+```text
+reports/audit_report_YYYYMMDD_HHMMSS.md
+```
+
+## Example report sections
+
+Generated Markdown reports include:
+
+- summary table by final verdict
+- one claim section per evaluated model claim
+- source fidelity status and score
+- contradiction flags
+- overconfidence markers
+- escalation triggers
+- method note and next improvements
+
+## Run tests
+
+```bash
+pip install -r requirements.txt
+pytest
 ```
 
 ## Current status
